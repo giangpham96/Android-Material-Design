@@ -28,8 +28,13 @@
             android:layout_gravity="bottom"
             >
 
-            <TextView
+            <Space
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -37,29 +42,46 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                tools:ignore="HardcodedText"
+                android:drawableLeft="@drawable/ic_rank"
+                tools:ignore="HardcodedText,RtlHardcoded"
                 />
 
-            <TextView
+            <Space
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_up"
                 android:gravity="center"
                 android:text="15.000+"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                tools:ignore="HardcodedText"
+                tools:ignore="HardcodedText,RtlHardcoded"
                 />
-
-            <TextView
+            <Space
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:drawableLeft="@drawable/ic_down"
                 android:text="5.000+"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                tools:ignore="HardcodedText"
+                tools:ignore="HardcodedText,RtlHardcoded"
+                />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 />
         </LinearLayout>
     </android.support.v7.widget.CardView>
