@@ -9,61 +9,64 @@ import android.view.View
 
 @SuppressWarnings("unused")
 class StatsBehavior(context: Context, attributes: AttributeSet)
-    : CoordinatorLayout.Behavior<CardView>(context, attributes) {
-
+    : AppbarScrollUpBehavior<CardView>(context, attributes) {
     private var maximumAppBarHeight: Int = 0
-    private val minimumAppBarHeight = context.getActionBarSize()
 
     private val collapsedX: Float = 0F
+
     private var expandedX: Float = 0F
     private var expandedY: Float = 0F
+    private var maxWidth: Int = 0
 
-    private var maximumWidth: Int = 0
-    private var minimumWidth: Int = 0
+    private var minWidth: Int = 0
+    private var maxHeight: Int = 0
 
-    private var maximumHeight: Int = 0
-    private var minimumHeight: Int = 0
+    private var minHeight: Int = 0
 
     private val maxRadius: Float
     private val minRadius: Float
-
+    private val maxContentPadding: Float
+    private val minContentPadding: Float
     init {
         val array = context.obtainStyledAttributes(attributes, R.styleable.StatsBehavior)
         maxRadius = array.getDimension(R.styleable.StatsBehavior_maxRadius, 0F)
         minRadius = array.getDimension(R.styleable.StatsBehavior_minRadius, 0F)
+        maxContentPadding = array.getDimension(R.styleable.StatsBehavior_maxContentPadding, 0F)
+        minContentPadding = array.getDimension(R.styleable.StatsBehavior_minContentPadding, 0F)
         array.recycle()
     }
 
     private var isInitialized: Boolean = false
+
     override fun layoutDependsOn(parent: CoordinatorLayout, child: CardView, dependency: View): Boolean {
         return dependency is AppBarLayout
     }
-
     override fun onDependentViewChanged(parent: CoordinatorLayout, child: CardView, dependency: View): Boolean {
         if (!isInitialized) {
-            maximumAppBarHeight = dependency.height
             expandedX = (child.layoutParams as CoordinatorLayout.LayoutParams).leftMargin.toFloat()
-            expandedY = maximumAppBarHeight - child.height / 2F
-            maximumWidth = dependency.width
-            minimumWidth = child.width
-            maximumHeight = child.height
-            minimumHeight = child.getChildAt(0).height + child.contentPaddingTop + child.contentPaddingBottom
+            expandedY = dependency.height - child.height / 2F
+            maxWidth = dependency.width
+            minWidth = child.width
+            maxHeight = child.height
+            minHeight = child.getChildAt(0).height + 2 * minContentPadding.toInt()
             isInitialized = true
         }
-        val ratio = (maximumAppBarHeight + dependency.y + (dependency.y / (maximumAppBarHeight - minimumAppBarHeight)) * minimumAppBarHeight) / maximumAppBarHeight
+        return super.onDependentViewChanged(parent, child, dependency)
+    }
+
+    override fun animateBaseOnAppbarMovement(offset: Float, parent: CoordinatorLayout, child: CardView, dependency: View) {
         child.apply {
-            x = ratio * (expandedX - collapsedX) + collapsedX
-            y = ratio * (expandedY - minimumAppBarHeight) + minimumAppBarHeight
-        }
-
-        val lp = (child.layoutParams as CoordinatorLayout.LayoutParams)
-            .apply {
-                width = ((minimumWidth - maximumWidth) * ratio + maximumWidth).toInt()
-                height = ((maximumHeight - minimumHeight) * ratio + minimumHeight).toInt()
+            x = offset * (expandedX - collapsedX) + collapsedX
+            y = offset * (expandedY - minimumAppBarHeight) + minimumAppBarHeight
+            layoutParams = (layoutParams as CoordinatorLayout.LayoutParams)
+                .apply {
+                    width = ((minWidth - maxWidth) * offset + maxWidth).toInt()
+                    height = ((maxHeight - minHeight) * offset + minHeight).toInt()
+                }
+            radius = (maxRadius - minRadius) * offset + minRadius
+            with(((maxContentPadding - minContentPadding) * offset + minContentPadding).toInt()) {
+                setContentPadding(this, this, this, this)
             }
-
-        child.layoutParams = lp
-        child.radius = (maxRadius - minRadius) * ratio + minRadius
-        return true
+        }
     }
 }

@@ -14,10 +14,11 @@
         android:layout_height="130dp"
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
-        app:contentPadding="16dp"
         app:elevation="8dp"
         app:layout_behavior="leo.me.la.collapsingtoolbarone.StatsBehavior"
+        app:maxContentPadding="16dp"
         app:maxRadius="8dp"
+        app:minContentPadding="4dp"
         app:minRadius="0dp"
         >
 
@@ -89,7 +90,6 @@
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="bottom"
                 app:layout_collapseMode="pin"
                 />
 
