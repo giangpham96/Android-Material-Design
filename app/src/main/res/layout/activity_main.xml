@@ -33,12 +33,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_rank"
-                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="23M"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:drawablePadding="8dp"
                 app:layout_constraintEnd_toStartOf="@id/up"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_chainStyle="spread"
@@ -50,11 +50,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_up"
-                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="15.000+"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
+                android:drawablePadding="8dp"
                 app:layout_constraintEnd_toStartOf="@id/down"
                 app:layout_constraintStart_toEndOf="@id/rank"
                 app:layout_constraintVertical_chainStyle="spread"
@@ -66,11 +66,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_down"
-                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="5.000+"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
+                android:drawablePadding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/up"
                 app:layout_constraintVertical_chainStyle="spread"
@@ -169,14 +169,15 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_behavior="leo.me.la.collapsingtoolbarone.WrappedScrollViewBehavior"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lorem"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             />
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
