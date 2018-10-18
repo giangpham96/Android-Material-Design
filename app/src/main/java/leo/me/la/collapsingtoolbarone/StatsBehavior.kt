@@ -1,13 +1,11 @@
 package leo.me.la.collapsingtoolbarone
 
 import android.content.Context
-import android.support.design.internal.ThemeEnforcement.obtainStyledAttributes
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import android.view.View
-import de.hdodenhof.circleimageview.CircleImageView
 
 @SuppressWarnings("unused")
 class StatsBehavior(context: Context, attributes: AttributeSet)
