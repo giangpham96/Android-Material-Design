@@ -9,7 +9,7 @@ import android.view.View
 
 @SuppressWarnings("unused")
 class StatsBehavior(context: Context, attributes: AttributeSet)
-    : AppbarScrollUpBehavior<CardView>(context, attributes) {
+    : AppbarScrollBehavior<CardView>(context, attributes) {
     private var maximumAppBarHeight: Int = 0
 
     private val collapsedX: Float = 0F

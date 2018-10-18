@@ -14,7 +14,7 @@ import android.view.View
  * pin on top when the [AppBarLayout] collapse. If those conditions do not satisfy, this class
  * will not work as unexpected behaviors will arise
  */
-abstract class AppbarScrollUpBehavior<T : View>(context: Context, attributes: AttributeSet)
+abstract class AppbarScrollBehavior<T : View>(context: Context, attributes: AttributeSet)
     : CoordinatorLayout.Behavior<T>(context, attributes) {
     protected val minimumAppBarHeight = context.getActionBarSize()
 

@@ -9,7 +9,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 @SuppressWarnings("unused")
 class AvatarBehavior(context: Context, attributes: AttributeSet)
-    : AppbarScrollUpBehavior<CircleImageView>(context, attributes) {
+    : AppbarScrollBehavior<CircleImageView>(context, attributes) {
     private var maximumSize: Int = 0
 
     private val minimumSize = minimumAppBarHeight * 2 / 3
