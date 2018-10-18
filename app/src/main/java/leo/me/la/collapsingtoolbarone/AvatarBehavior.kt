@@ -20,10 +20,6 @@ class AvatarBehavior(context: Context, attributes: AttributeSet)
     private var expandedY: Float = 0F
     private var isInitialized: Boolean = false
 
-    override fun layoutDependsOn(parent: CoordinatorLayout, child: CircleImageView, dependency: View): Boolean {
-        return dependency is AppBarLayout
-    }
-
     override fun onDependentViewChanged(parent: CoordinatorLayout, child: CircleImageView, dependency: View): Boolean {
         if (!isInitialized) {
             maximumSize = child.height

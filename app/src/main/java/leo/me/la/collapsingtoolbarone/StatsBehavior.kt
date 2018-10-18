@@ -10,7 +10,6 @@ import android.view.View
 @SuppressWarnings("unused")
 class StatsBehavior(context: Context, attributes: AttributeSet)
     : AppbarScrollBehavior<CardView>(context, attributes) {
-    private var maximumAppBarHeight: Int = 0
 
     private val collapsedX: Float = 0F
 
@@ -38,9 +37,6 @@ class StatsBehavior(context: Context, attributes: AttributeSet)
 
     private var isInitialized: Boolean = false
 
-    override fun layoutDependsOn(parent: CoordinatorLayout, child: CardView, dependency: View): Boolean {
-        return dependency is AppBarLayout
-    }
     override fun onDependentViewChanged(parent: CoordinatorLayout, child: CardView, dependency: View): Boolean {
         if (!isInitialized) {
             expandedX = (child.layoutParams as CoordinatorLayout.LayoutParams).leftMargin.toFloat()
