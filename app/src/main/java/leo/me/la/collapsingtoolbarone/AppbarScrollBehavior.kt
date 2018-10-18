@@ -18,6 +18,7 @@ abstract class AppbarScrollBehavior<T : View>(context: Context, attributes: Attr
     : CoordinatorLayout.Behavior<T>(context, attributes) {
     protected val minimumAppBarHeight = context.getActionBarSize()
 
+    @CallSuper
     override fun layoutDependsOn(parent: CoordinatorLayout, child: T, dependency: View): Boolean {
         return dependency is AppBarLayout
     }
