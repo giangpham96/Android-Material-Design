@@ -18,7 +18,7 @@
         app:elevation="8dp"
         app:layout_behavior="leo.me.la.collapsingtoolbarone.StatsBehavior"
         app:maxRadius="8dp"
-        app:minRadius="8dp"
+        app:minRadius="0dp"
         >
 
         <LinearLayout
