@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout.HORIZONTAL
 import kotlinx.android.synthetic.main.activity_main.trends
 import leo.me.la.collapsingtoolbarone.ui.adapter.TrendAdapter
+import android.support.v7.widget.LinearSnapHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,5 +17,6 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity, HORIZONTAL, false)
             adapter = TrendAdapter()
         }
+        LinearSnapHelper().attachToRecyclerView(trends)
     }
 }
