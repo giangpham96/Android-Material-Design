@@ -120,8 +120,8 @@
         android:layout_marginBottom="-16dp"
         android:elevation="16dp"
         android:src="@drawable/avatar"
-        app:border_color="@android:color/white"
-        app:border_width="2dp"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp"
         app:layout_behavior="leo.me.la.collapsingtoolbarone.ui.coordinatorbehavior.AvatarBehavior"
         tools:ignore="RtlHardcoded"
         />
