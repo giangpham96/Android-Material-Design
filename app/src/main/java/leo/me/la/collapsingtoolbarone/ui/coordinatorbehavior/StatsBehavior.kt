@@ -1,11 +1,11 @@
-package leo.me.la.collapsingtoolbarone
+package leo.me.la.collapsingtoolbarone.ui.coordinatorbehavior
 
 import android.content.Context
-import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import android.view.View
+import leo.me.la.collapsingtoolbarone.R
 
 @SuppressWarnings("unused")
 class StatsBehavior(context: Context, attributes: AttributeSet)

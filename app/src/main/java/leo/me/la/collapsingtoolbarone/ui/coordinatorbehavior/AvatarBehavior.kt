@@ -1,7 +1,6 @@
-package leo.me.la.collapsingtoolbarone
+package leo.me.la.collapsingtoolbarone.ui.coordinatorbehavior
 
 import android.content.Context
-import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CoordinatorLayout
 import android.util.AttributeSet
 import android.view.View

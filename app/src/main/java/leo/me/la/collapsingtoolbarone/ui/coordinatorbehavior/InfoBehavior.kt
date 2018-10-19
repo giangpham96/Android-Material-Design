@@ -1,4 +1,4 @@
-package leo.me.la.collapsingtoolbarone
+package leo.me.la.collapsingtoolbarone.ui.coordinatorbehavior
 
 import android.animation.ArgbEvaluator
 import android.content.Context
@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import leo.me.la.collapsingtoolbarone.R
 
 @SuppressWarnings("unused")
 class InfoBehavior(context: Context, attributes: AttributeSet)
