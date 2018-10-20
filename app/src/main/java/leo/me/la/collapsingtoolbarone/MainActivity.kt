@@ -15,6 +15,7 @@ import leo.me.la.collapsingtoolbarone.ui.adapter.PostAdapter
 import leo.me.la.collapsingtoolbarone.ui.preloadsizeprovider.RemotePreloadSizeProvider
 import android.app.Activity
 import android.graphics.Point
+import kotlinx.android.synthetic.main.activity_main.name
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             adapter = postAdapter
             addOnScrollListener(postPreloader)
         }
-
+        name.isSelected = true
     }
 }
 
