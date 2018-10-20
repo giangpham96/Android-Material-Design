@@ -68,7 +68,7 @@ class TrendAdapter(
     override fun getPreloadRequestBuilder(item: Trend): RequestBuilder<Drawable>? {
         return fullRequest.load(item.imageUrl)
             .thumbnail(thumbnailRequest.load(item.imageUrl))
-            .configure()
+            .configure(centerCrop = true)
     }
 
     class TrendVH(
@@ -83,7 +83,7 @@ class TrendAdapter(
             name.text = trend.name
             fullRequest.load(trend.imageUrl)
                 .thumbnail(thumbnailRequest.load(trend.imageUrl))
-                .configure()
+                .configure(centerCrop = true)
                 .into(image)
         }
     }
