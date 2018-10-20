@@ -1,7 +1,6 @@
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
-import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
@@ -24,6 +23,7 @@ fun ImageView.loadUri(
         .load(uri)
         .thumbnail(GlideApp.with(context).load(thumbnail))
         .configure(
+            true,
             cache,
             noFade,
             noPlaceholder,
@@ -52,6 +52,7 @@ fun ImageView.loadUri(
 )
 
 fun GlideRequest<Drawable>.configure(
+    centerCrop: Boolean = false,
     cache: Boolean = true,
     noFade: Boolean = false,
     noPlaceholder: Boolean = false,
@@ -81,8 +82,8 @@ fun GlideRequest<Drawable>.configure(
             return false
         }
     })
-    .centerCrop()
     .apply {
+        if (centerCrop) centerCrop()
         if (!noPlaceholder) placeholder(android.R.color.darker_gray)
         if (!noFade) transition(DrawableTransitionOptions().crossFade())
     }
