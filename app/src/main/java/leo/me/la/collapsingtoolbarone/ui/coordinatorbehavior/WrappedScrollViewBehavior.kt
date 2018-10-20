@@ -17,10 +17,16 @@ class WrappedScrollViewBehavior(context: Context, attributes: AttributeSet)
     override fun onDependentViewChanged(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
         if (dependency is AppBarLayout)
             return super.onDependentViewChanged(parent, child, dependency)
-        if (dependency is CardView)
+        if (dependency is CardView) {
             child.y = dependency.y + dependency.height + (dependency.layoutParams as
                 CoordinatorLayout.LayoutParams).bottomMargin + (child.layoutParams as
                 CoordinatorLayout.LayoutParams).topMargin
+            // A hack for content display. If removed, a small part of the content will not be shown
+            child.layoutParams = (child.layoutParams as CoordinatorLayout.LayoutParams)
+                .also {
+                    it.bottomMargin = dependency.height
+                }
+        }
         return false
     }
 }
