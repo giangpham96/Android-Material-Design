@@ -25,14 +25,14 @@ class TrendAdapter(
     private val trends: List<Trend> = listOf(
         Trend("Fitness", "https://hdqwalls.com/walls/thumb/gym-girl-8k-image.jpg"),
         Trend("Animal", "https://render.fineartamerica.com/images/rendered/search/print/images-medium-5/1-panda-king-wu.jpg"),
-        Trend("Outdoor", "http://www.ablecanopies.co.uk/blog/wp-content/uploads/2015/11/outdoor-learning-for-secondary-schools-small-200x300.jpg"),
+        Trend("Outdoor", "https://www.telegraph.co.uk/content/dam/travel/Spark/Slovenia/kayaking-soca-valley.jpg?imwidth=450"),
         Trend("Movie", "https://media3.mensxp.com/media/content/2017/Sep/this-fan-made-trailer-is-proof-pennywise-is-batman-rsquo-s-best-enemy600-1506513559_200x300.jpg"),
         Trend("Football", "https://d2x51gyc4ptf2q.cloudfront.net/content/uploads/2018/05/17105055/Lionel-Messi-1.jpg"),
-        Trend("Music", "http://img.cdn2.vietnamnet.vn/Images/english/2017/01/04/14/20170104141533-sontung.jpg"),
-        Trend("Art", "http://www.artscouncil.ie/uploadedImages/Main_Site/Pages/who_funded.jpg"),
+        Trend("Music", "https://pbs.twimg.com/media/C5dbE-DU8AAv-ZX.jpg"),
+        Trend("Art", "https://www.artgallery.co.uk/media/large/2DB7D305-9674-4CEE-A9D5-229DE6B67B43.jpg"),
         Trend("News", "https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2018/02/screen_shot_2018-02-07_at_9.57.26_am_1_-_h_2018.jpg"),
-        Trend("Food", "http://www.restauranttristan.co.uk/wp-content/uploads/2016/10/tristan-dish-1111.jpg"),
-        Trend("Style", "http://img.saobiz.net/d/2016/06/nang-tho-xu-hue.jpg")
+        Trend("Food", "https://vina-jpodufumfywuunpq60f.stackpathdns.com/wp-content/uploads/2015/09/Vietnam-Food-Culture-History.jpg"),
+        Trend("Style", "https://i.pinimg.com/originals/d6/37/c8/d637c8f2c1a03cab17279f545dbf9a53.jpg")
     )
 ) : RecyclerView.Adapter<TrendAdapter.TrendVH>(), ListPreloader.PreloadModelProvider<Trend> {
 

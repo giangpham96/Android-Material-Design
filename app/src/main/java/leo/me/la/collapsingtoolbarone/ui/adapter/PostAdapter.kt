@@ -34,7 +34,7 @@ class PostAdapter(
         ),
         Post(
             3231,
-            "http://dollars-bbs.org/sports/src/1433367290411.jpg",
+            "https://us.123rf.com/450wm/photodeti/photodeti1711/photodeti171100520/90583841-funny-fitness-cat-with-dumbbell-above-white-banner-isolated-on-white-background-.jpg?ver=6",
             listOf("Fitness", "Animal", "Funny", "Cat", "Dumbbell", "Workout")
         ),
         Post(
