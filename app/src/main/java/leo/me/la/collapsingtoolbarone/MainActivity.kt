@@ -96,21 +96,16 @@ class MainActivity : AppCompatActivity() {
                 }
                 AnimatorSet().apply {
                     playSequentially(
-                        if (actions.visibility == View.VISIBLE) {
-                            listOf(hideActionsAnimator)
-                        } else {
-                            emptyList()
-                        } + listOf(
-                            AnimatorSet().apply {
-                                playTogether(xAnimator, yAnimator)
-                                duration = 300
-                            },
-                            // Ensure that the fab is shown at least half a second before it is
-                            // hidden by scrolling down behavior
-                            ValueAnimator.ofInt(0, 1).apply {
-                                duration = 500
-                            }
-                        )
+                        hideActionsAnimator,
+                        AnimatorSet().apply {
+                            playTogether(xAnimator, yAnimator)
+                            duration = 300
+                        },
+                        // Ensure that the fab is shown at least half a second before it is
+                        // hidden by scrolling down behavior
+                        ValueAnimator.ofInt(0, 1).apply {
+                            duration = 500
+                        }
                     )
                 }.also {
                     fab.setTag(R.string.animator_hide, it)
