@@ -242,10 +242,11 @@
         android:background="@color/colorPrimary"
         android:visibility="invisible"
         >
-        <TextView
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/add_post"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
+            android:textAllCaps="false"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -255,14 +256,16 @@
             android:textSize="12sp"
             android:textColor="@android:color/white"
             android:drawableTop="@drawable/ic_add_post"
-            android:background="@android:color/transparent"
+            android:background="@drawable/ripple_action"
             tools:ignore="ContentDescription,HardcodedText"
+            android:focusable="true"
             />
-        <TextView
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/add_friend"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:layout_width="0dp"
+            android:textAllCaps="false"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -271,12 +274,14 @@
             android:textSize="12sp"
             android:textColor="@android:color/white"
             android:drawableTop="@drawable/ic_add_friend"
-            android:background="@android:color/transparent"
+            android:background="@drawable/ripple_action"
             tools:ignore="ContentDescription,HardcodedText"
+            android:focusable="true"
             />
-        <TextView
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/add_note"
             android:paddingTop="8dp"
+            android:textAllCaps="false"
             android:paddingBottom="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -287,8 +292,9 @@
             android:textSize="12sp"
             android:textColor="@android:color/white"
             android:drawableTop="@drawable/ic_add_note"
-            android:background="@android:color/transparent"
+            android:background="@drawable/ripple_action"
             tools:ignore="ContentDescription,HardcodedText"
+            android:focusable="true"
             />
         <ImageButton
             android:id="@+id/close_actions"
@@ -296,10 +302,10 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/ic_close"
-            android:background="@android:color/transparent"
+            android:background="@drawable/ripple_action"
             tools:ignore="ContentDescription"
             />
     </LinearLayout>
