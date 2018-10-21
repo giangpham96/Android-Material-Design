@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CollapsingToolbarOne</string>
     <string name="initial_text_color">initial_text_color</string>
+    <string name="initial_x">initial_x</string>
+    <string name="initial_y">initial_y</string>
+    <string name="animator_reveal">initial_y</string>
+    <string name="animator_hide">initial_y</string>
 </resources>
