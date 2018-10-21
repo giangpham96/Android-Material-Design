@@ -23,7 +23,12 @@ import android.support.v4.widget.NestedScrollView
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.animation.Interpolator
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.actions
+import kotlinx.android.synthetic.main.activity_main.add_friend
+import kotlinx.android.synthetic.main.activity_main.add_note
+import kotlinx.android.synthetic.main.activity_main.add_post
+import kotlinx.android.synthetic.main.activity_main.close_actions
 import kotlinx.android.synthetic.main.activity_main.content_scorller
 import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.activity_main.name
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         setUpPostRecyclerView()
         setUpScrollViewBehavior()
         setUpFab()
+        setUpActions()
         name.isSelected = true
     }
 
@@ -139,6 +145,24 @@ class MainActivity : AppCompatActivity() {
         }.also {
             fab.setTag(R.string.animator_hide, it)
         }.start()
+    }
+
+    private fun setUpActions() {
+        add_friend.setOnClickListener {
+            hideActions()
+            Toast.makeText(this, "Find friends", Toast.LENGTH_SHORT).show()
+        }
+        add_post.setOnClickListener {
+            hideActions()
+            Toast.makeText(this, "New post", Toast.LENGTH_SHORT).show()
+        }
+        add_note.setOnClickListener {
+            hideActions()
+            Toast.makeText(this, "New note", Toast.LENGTH_SHORT).show()
+        }
+        close_actions.setOnClickListener {
+            hideActions()
+        }
     }
 
     private fun setUpFab() {
