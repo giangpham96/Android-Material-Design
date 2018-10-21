@@ -33,6 +33,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpTrendRecyclerView()
+        setUpPostRecyclerView()
+        setUpScrollViewBehavior()
+        setUpFab()
+        name.isSelected = true
+    }
+
+    private fun setUpTrendRecyclerView() {
         val trendPreloadSizeProvider = ViewPreloadSizeProvider<Trend>()
         val trendAdapter = TrendAdapter(this@MainActivity, trendPreloadSizeProvider)
         val trendPreloader = RecyclerViewPreloader<Trend>(this, trendAdapter, trendPreloadSizeProvider, 5)
@@ -42,6 +50,9 @@ class MainActivity : AppCompatActivity() {
             addOnScrollListener(trendPreloader)
         }
         LinearSnapHelper().attachToRecyclerView(trends)
+    }
+
+    private fun setUpPostRecyclerView() {
         val postAdapter = PostAdapter(this@MainActivity)
         val postPreloadSizeProvider = RemotePreloadSizeProvider<Post>(getScreenWidth())
         val postPreloader = RecyclerViewPreloader<Post>(this, postAdapter, postPreloadSizeProvider, 5)
@@ -50,66 +61,17 @@ class MainActivity : AppCompatActivity() {
             adapter = postAdapter
             addOnScrollListener(postPreloader)
         }
-        name.isSelected = true
-        content_scorller.setOnScrollChangeListener { nestedScrollView: NestedScrollView?, x: Int, y: Int, oldX: Int, oldY: Int ->
+    }
+
+    private fun setUpScrollViewBehavior() {
+        content_scorller.setOnScrollChangeListener { _: NestedScrollView?, _: Int, y: Int, _: Int, oldY: Int ->
             val hideActionsAnimatorSet = fab.getTag(R.string.animator_hide) as? AnimatorSet
             val revealActionsAnimator = fab.getTag(R.string.animator_reveal) as? AnimatorSet
             if (hideActionsAnimatorSet?.isRunning == true || revealActionsAnimator?.isRunning == true) {
                 return@setOnScrollChangeListener
             }
             if (actions.visibility == View.VISIBLE) {
-                val xAnimator = ObjectAnimator.ofFloat(
-                    fab,
-                    "x",
-                    fab.getTag(R.string.initial_x) as Float
-                )
-                val yAnimator = ObjectAnimator.ofFloat(
-                    fab,
-                    "y",
-                    fab.getTag(R.string.initial_y) as Float
-                ).apply {
-                    interpolator = Interpolator { input ->
-                        1 - (Math.pow(1.2, -30 * (input - 0.2)) * Math.sin(2 * Math.PI * (input - 0.2) + Math.PI / 2)).toFloat()
-                    }
-                }
-                val hideActionsAnimator = ViewAnimationUtils.createCircularReveal(
-                    actions,
-                    (actions.width / 2),
-                    (actions.height / 2),
-                    actions.width / 2f * 1.2f,
-                    0f
-                ).apply {
-                    duration = 300
-                    addListener(object : Animator.AnimatorListener {
-                        override fun onAnimationRepeat(animation: Animator?) {}
-
-                        override fun onAnimationEnd(animation: Animator?) {
-                            fab.show()
-                            actions.visibility = View.INVISIBLE
-                        }
-
-                        override fun onAnimationCancel(animation: Animator?) {}
-
-                        override fun onAnimationStart(animation: Animator?) {}
-
-                    })
-                }
-                AnimatorSet().apply {
-                    playSequentially(
-                        hideActionsAnimator,
-                        AnimatorSet().apply {
-                            playTogether(xAnimator, yAnimator)
-                            duration = 300
-                        },
-                        // Ensure that the fab is shown at least half a second before it is
-                        // hidden by scrolling down behavior
-                        ValueAnimator.ofInt(0, 1).apply {
-                            duration = 500
-                        }
-                    )
-                }.also {
-                    fab.setTag(R.string.animator_hide, it)
-                }.start()
+                hideActions()
             } else {
                 if (y > oldY) {
                     fab.hide()
@@ -118,12 +80,79 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun hideActions() {
+        val hideActionsAnimatorSet = fab.getTag(R.string.animator_hide) as? AnimatorSet
+        val revealActionsAnimator = fab.getTag(R.string.animator_reveal) as? AnimatorSet
+        hideActionsAnimatorSet?.cancel()
+        revealActionsAnimator?.cancel()
+        val xAnimator = ObjectAnimator.ofFloat(
+            fab,
+            "x",
+            fab.getTag(R.string.initial_x) as Float
+        )
+        val yAnimator = ObjectAnimator.ofFloat(
+            fab,
+            "y",
+            fab.getTag(R.string.initial_y) as Float
+        ).apply {
+            interpolator = Interpolator { input ->
+                1 - (Math.pow(1.2, -30 * (input - 0.2)) * Math.sin(2 * Math.PI * (input - 0.2) + Math.PI / 2)).toFloat()
+            }
+        }
+        val hideActionsAnimator = ViewAnimationUtils.createCircularReveal(
+            actions,
+            (actions.width / 2),
+            (actions.height / 2),
+            actions.width / 2f * 1.2f,
+            0f
+        ).apply {
+            duration = 300
+            addListener(object : Animator.AnimatorListener {
+                override fun onAnimationRepeat(animation: Animator?) {}
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    fab.show()
+                    actions.visibility = View.INVISIBLE
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {}
+
+                override fun onAnimationStart(animation: Animator?) {}
+
+            })
+        }
+        AnimatorSet().apply {
+            playSequentially(
+                hideActionsAnimator,
+                AnimatorSet().apply {
+                    playTogether(xAnimator, yAnimator)
+                    duration = 300
+                },
+                // Ensure that the fab is shown at least half a second before it is
+                // hidden by scrolling down behavior
+                ValueAnimator.ofInt(0, 1).apply {
+                    duration = 500
+                }
+            )
+        }.also {
+            fab.setTag(R.string.animator_hide, it)
+        }.start()
+    }
+
+    private fun setUpFab() {
         fab.apply {
             post {
                 setTag(R.string.initial_x, fab.x)
                 setTag(R.string.initial_y, fab.y)
             }
             setOnClickListener {
+                val hideActionsAnimatorSet = fab.getTag(R.string.animator_hide) as? AnimatorSet
+                val revealActionsAnimatorSet = fab.getTag(R.string.animator_reveal) as? AnimatorSet
+                if (hideActionsAnimatorSet?.isRunning == true || revealActionsAnimatorSet?.isRunning == true) {
+                    return@setOnClickListener
+                }
                 val xAnimator = ObjectAnimator.ofFloat(
                     it,
                     "x",
