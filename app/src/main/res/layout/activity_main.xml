@@ -169,6 +169,7 @@
     </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/content_scorller"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="leo.me.la.collapsingtoolbarone.ui.coordinatorbehavior.WrappedScrollViewBehavior"
@@ -223,4 +224,79 @@
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_add"
+        />
+
+    <LinearLayout
+        android:id="@+id/actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="New post"
+            android:textSize="12sp"
+            android:textColor="@android:color/white"
+            android:drawableTop="@drawable/ic_add_post"
+            android:background="@android:color/transparent"
+            tools:ignore="ContentDescription,HardcodedText"
+            />
+        <TextView
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Find friends"
+            android:textSize="12sp"
+            android:textColor="@android:color/white"
+            android:drawableTop="@drawable/ic_add_friend"
+            android:background="@android:color/transparent"
+            tools:ignore="ContentDescription,HardcodedText"
+            />
+        <TextView
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="New note"
+            android:textSize="12sp"
+            android:textColor="@android:color/white"
+            android:drawableTop="@drawable/ic_add_note"
+            android:background="@android:color/transparent"
+            tools:ignore="ContentDescription,HardcodedText"
+            />
+        <ImageButton
+            android:layout_gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_close"
+            android:background="@android:color/transparent"
+            tools:ignore="ContentDescription"
+            />
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
