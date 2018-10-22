@@ -17,7 +17,7 @@ Handle `RevealAnimator`, `ObjectAnimator` properly (at least, no weird behavior 
 
 Use those animators to create `FloatingBehaviorButton` to options list transformation
 
-![CooridinatorLayout Behaivor](/arts/20181021_140649.gif?raw=true)
+![Animator](/arts/20181021_140649.gif?raw=true)
 
 ### Glide
 Custom `PreloadSizeProvider` for `RecyclerView` integration. The class `RemotePreloadSizeProvider`
