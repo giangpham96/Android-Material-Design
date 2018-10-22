@@ -174,9 +174,8 @@ class MainActivity : AppCompatActivity() {
             setOnClickListener {
                 val hideActionsAnimatorSet = fab.getTag(R.string.animator_hide) as? AnimatorSet
                 val revealActionsAnimatorSet = fab.getTag(R.string.animator_reveal) as? AnimatorSet
-                if (hideActionsAnimatorSet?.isRunning == true || revealActionsAnimatorSet?.isRunning == true) {
-                    return@setOnClickListener
-                }
+                hideActionsAnimatorSet?.cancel()
+                revealActionsAnimatorSet?.cancel()
                 val xAnimator = ObjectAnimator.ofFloat(
                     it,
                     "x",
